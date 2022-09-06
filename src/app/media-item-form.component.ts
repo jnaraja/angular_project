@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./media-item-form.component.css']
 })
 export class MediaItemFormComponent {
-    onSubmit(mediaItem) {
-        console.log(mediaItem);
-    }
+  onSubmit(mediaItem) {
+    console.log(mediaItem);
+  }
 }
