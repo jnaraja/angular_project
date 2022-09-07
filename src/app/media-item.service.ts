@@ -1,3 +1,8 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+})
 export class MediaItemService {
     mediaItems = [
         {
@@ -45,7 +50,7 @@ export class MediaItemService {
     ];
 
     get() {
-
+        return this.mediaItems;
     }
 
     add(mediaItem) {
