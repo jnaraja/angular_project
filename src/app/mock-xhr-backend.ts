@@ -65,7 +65,7 @@ export class MockXHRBackend implements HttpBackend {
               mediaItems = this.mediaItems;
             }
             responseOptions = {
-              body: {mediaItems: JSON.parse(JSON.stringify(mediaItems))},
+              body: { mediaItems: JSON.parse(JSON.stringify(mediaItems)) },
               status: 200
             };
           } else {
@@ -82,12 +82,12 @@ export class MockXHRBackend implements HttpBackend {
           const mediaItem = request.body;
           mediaItem.id = this._getNewId();
           this.mediaItems.push(mediaItem);
-          responseOptions = {status: 201};
+          responseOptions = { status: 201 };
           break;
         case 'DELETE':
           const id = parseInt(request.url.split('/')[1], 10);
           this._deleteMediaItem(id);
-          responseOptions = {status: 200};
+          responseOptions = { status: 200 };
       }
 
       const responseObject = new HttpResponse(responseOptions);

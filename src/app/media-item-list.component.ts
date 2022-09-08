@@ -11,28 +11,29 @@ export class MediaItemListComponent implements OnInit {
   medium = '';
   mediaItems: MediaItem[];
 
-  constructor(private mediaItemService: MediaItemService,
+  constructor(
+    private mediaItemService: MediaItemService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap
-    .subscribe(paramMap => {
-      let medium = paramMap.get('medium');
-      if (medium.toLocaleLowerCase() === 'all') {
-        medium = '';
-      }
-      this.getMediaItems(medium);
-    });
+      .subscribe(paramMap => {
+        let medium = paramMap.get('medium');
+        if (medium.toLowerCase() === 'all') {
+          medium = '';
+        }
+        this.getMediaItems(medium);
+      });
   }
 
-  onMediaItemDelete(mediaItem) {
+  onMediaItemDelete(mediaItem: MediaItem) {
     this.mediaItemService.delete(mediaItem)
       .subscribe(() => {
         this.getMediaItems(this.medium);
       });
   }
 
-  getMediaItems(medium) {
+  getMediaItems(medium: string) {
     this.medium = medium;
     this.mediaItemService.get(medium)
       .subscribe(mediaItems => {
