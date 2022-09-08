@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { lookup } from 'dns';
 import { MediaItemService } from './media-item.service';
 import { lookupListToken } from './providers';
 
@@ -15,7 +14,7 @@ export class MediaItemFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private mediaItemService: MediaItemService,
-    @Inject(lookupListToken) public lookupLists) {}
+    @Inject(lookupListToken) public lookupLists) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -34,20 +33,22 @@ export class MediaItemFormComponent implements OnInit {
       return null;
     }
     const year = parseInt(control.value, 10);
-    const minYear = 1800;
-    const maxYear = 2500;
+    const minYear = 1900;
+    const maxYear = 2100;
     if (year >= minYear && year <= maxYear) {
       return null;
     } else {
-      return { year: {
-        min: minYear,
-        max: maxYear
-      } };
+      return {
+        year: {
+          min: minYear,
+          max: maxYear
+        }
+      };
     }
   }
 
   onSubmit(mediaItem) {
-    console.log(mediaItem);
-    this.mediaItemService.add(mediaItem);
+    this.mediaItemService.add(mediaItem)
+      .subscribe();
   }
 }
