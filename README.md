@@ -1,5 +1,7 @@
 # Angular Essential Training
 
-This is the repository for a course **Angular Essential Training**
+This is a Media Watch List that I created from a course **Angular Essential Training**
 
+## Media Watch List
+- This web application allows users to add, remove, favorite and mark a movie as watched.
 
